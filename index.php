@@ -13,7 +13,7 @@ and open the template in the editor.
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <body>
-<form>
+        <form id="acceso" action="Acceso.php" method="post">
         <fieldset>
         <legend>Personal information:</legend>
         Usuario:<br>
@@ -21,9 +21,12 @@ and open the template in the editor.
         Clave:<br>
             <input type="text" name="clave" id="clave"><br>
             <br>
+            <div id="mensaje"></div>
             <input type="button" name="enviar" value ="Enviar" onclick="Validar()">
+            
         </fieldset>
 </form>
+        
     </body>
     <script> 
         function Validar(){
@@ -37,7 +40,10 @@ and open the template in the editor.
                     type:'POST',
                     data:"usuario="+$("#usuario").val()+"&clave="+clave,
                     success:function(datos){
-                       alert(datos);
+                      if (datos=='true') 
+                          $("#acceso").submit();
+                      else
+                           $("#mensaje").html("Usuario o clave erroneo");
                     }
                 });
         
