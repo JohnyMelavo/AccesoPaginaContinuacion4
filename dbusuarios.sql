@@ -104,4 +104,16 @@ ALTER TABLE `sg_perfilusuario`
   MODIFY `idperfilusuario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 
-insert into usuarios(nombre,usuario,clave) values('Administrador', 'admin','1c7a92ae351d4e21ebdfb897508f59d6');
+insert into usuarios(nombre,usuario,clave)
+values('Administrador', 'admin','1c7a92ae351d4e21ebdfb897508f59d6');
+
+insert into sg_perfiles(nombre,DESCRIPCION,ESTADO)
+values('administradores','Usuarios responsables del sistema',1)
+
+insert into sg_perfilacceso(tipoacceso,codigo)
+values('M','SALIR');
+insert into sg_perfilacceso(tipoacceso,codigo)
+values('M','CC');
+
+insert into sg_perfilusuario(idperfil,usuario)
+values(1,'admin')
