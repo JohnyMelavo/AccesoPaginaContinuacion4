@@ -57,8 +57,7 @@ Class Usuario{
         
     }
     
-    
-     public function ModificaClave($nuevaClave){
+    public function ModificaClave($nuevaClave){
         /*Llamado a la función que crea la instancia del objeto PDO*/
         
         $db= dbconnect();

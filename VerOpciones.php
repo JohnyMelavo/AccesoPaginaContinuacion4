@@ -23,11 +23,8 @@ and open the template in the editor.
 
 $oUsr=unserialize($_SESSION['oUsr']);
 
-echo "Bienvenido:".$oUsr->getNombre()." ".$oUsr->getApellido();
+echo "Cambiar clave a:".$oUsr->getNombre()." ".$oUsr->getApellido();
 ?>
-<a href="logout.php"> Salir</a>
-<a href="CambiarClave.php"> Cambiar Clave</a>
-<a href="VerOpciones.php"> Ver opciones</a>
-
+      
 </body>
 </html>
