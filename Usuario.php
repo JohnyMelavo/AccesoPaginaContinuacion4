@@ -76,6 +76,30 @@ Class Usuario{
         return $resultado;
         
     }
+    
+     public function OpcionesMenu(){
+        /*Llamado a la función que crea la instancia del objeto PDO*/
+        
+        $db= dbconnect();
+        
+        /*Declaración de la sentencia SQL que se requiere ejecutar*/
+        $squery="SELECT spa.codigo
+                    FROM sg_perfiles as sp 
+                    INNER JOIN sg_perfilacceso as spa on sp.idperfil=spa.idperfil
+                    INNER JOIN sg_perfilusuario as spu on sp.IDPERFIL=spu.idperfil
+                    where spu.usuario=:usr and spa.tipoacceso='M'";
+        
+        /*Instancia del objeto que realizará el query*/
+        $queryseleccion=$db->prepare($squery);
+        
+        $queryseleccion->bindParam(":usr",$this->nomusuario);
+        
+        $resultado=$queryseleccion->execute();
+        
+        return $resultado;
+        
+    }
+    
 }
 
 ?>

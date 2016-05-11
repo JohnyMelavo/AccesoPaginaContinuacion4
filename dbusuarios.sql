@@ -10,6 +10,7 @@
 
 CREATE TABLE `sg_perfilacceso` (
   `idperfilacceso` bigint(20) UNSIGNED NOT NULL,
+  `idperfil` bigint(20) NOT NULL,
   `tipoacceso` char(1) COLLATE utf8_bin NOT NULL,
   `codigo` varchar(30) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -110,9 +111,9 @@ values('Administrador', 'admin','1c7a92ae351d4e21ebdfb897508f59d6');
 insert into sg_perfiles(nombre,DESCRIPCION,ESTADO)
 values('administradores','Usuarios responsables del sistema',1)
 
-insert into sg_perfilacceso(tipoacceso,codigo)
+insert into sg_perfilacceso(tipoacceso,codigo,1)
 values('M','SALIR');
-insert into sg_perfilacceso(tipoacceso,codigo)
+insert into sg_perfilacceso(tipoacceso,codigo,1)
 values('M','CC');
 
 insert into sg_perfilusuario(idperfil,usuario)
