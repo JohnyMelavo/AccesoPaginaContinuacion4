@@ -49,9 +49,24 @@ echo "Cambiar clave a:".$oUsr->getNombre()." ".$oUsr->getApellido();
             var dato=$("#claveactual").val();
             clave=CryptoJS.MD5(dato).toString();
 
-            if (claveactual!=clave) alert("Clave no corresponde");
+            if (claveactual!=clave){
+               alert("Clave actual no corresponde"); 
+               return;
+            }
 
-            if ($("#clavenueva").val()!=$("#repetirclave").val()) alert("Su nueva clave no coincide");
+            if ($("#clavenueva").val()!=$("#repetirclave").val()){
+                alert("Su nueva clave no coincide");
+                return;
+            }
+            
+            $.ajax({
+                    url:'AccCambiarClave.php',
+                    type:'POST',
+                    data:"clave="+ CryptoJS.MD5($("#clavenueva").val()).toString(),
+                    success:function(datos){
+                      alert("clave cambiada");
+                    }
+                });
         }
     </script> 
 </body>

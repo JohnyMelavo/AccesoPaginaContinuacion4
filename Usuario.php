@@ -31,14 +31,13 @@ Class Usuario{
     }
 
     public function Acceso(){
-        /*$snomusuario="admin";
-        $sclave=md5("holamundo");*/
+      
         /*Llamado a la función que crea la instancia del objeto PDO*/
         
         $db= dbconnect();
         
         /*Declaración de la sentencia SQL que se requiere ejecutar*/
-        $squery="Select nombre from dbusuarios.usuarios where usuario=:usr and clave=:pwd";
+        $squery="Select nombre from usuarios where usuario=:usr and clave=:pwd";
         
         /*Instancia del objeto que realizará el query*/
         $queryseleccion=$db->prepare($squery);
@@ -56,12 +55,27 @@ Class Usuario{
             return false;
         }
         
-        /*
-        if($this->nomusuario==$snomusuario && $this->clave==$sclave)
-            return true;
-        else
-            return false;
-        */
+    }
+    
+    
+     public function ModificaClave($nuevaClave){
+        /*Llamado a la función que crea la instancia del objeto PDO*/
+        
+        $db= dbconnect();
+        
+        /*Declaración de la sentencia SQL que se requiere ejecutar*/
+        $squery="update usuarios set clave=:pwd where usuario=:usr";
+        
+        /*Instancia del objeto que realizará el query*/
+        $queryseleccion=$db->prepare($squery);
+        
+        $queryseleccion->bindParam(":usr",$this->nomusuario);
+        $queryseleccion->bindParam(":pwd",$nuevaClave);
+        
+        $resultado=$queryseleccion->execute();
+        
+        return $resultado;
+        
     }
 }
 
